@@ -187,6 +187,14 @@ h2 {
   border-color: rgba(15, 111, 220, 0.45);
 }
 
+.btn-whatsapp {
+  background: linear-gradient(135deg, #19c15a, #12a64b);
+}
+
+.btn-call {
+  background: linear-gradient(135deg, #ff8b1f, #ff6f00);
+}
+
 .btn-small {
   padding: 10px 14px;
   border-radius: 9px;
@@ -204,6 +212,13 @@ h2 {
   color: #3e4f69;
   display: grid;
   gap: 8px;
+}
+
+.quick-points-trust {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 16px;
+  color: #1d3557;
+  font-weight: 600;
 }
 
 .hero-card {
@@ -353,6 +368,13 @@ h2 {
   gap: 8px;
 }
 
+.contact-quick-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .contact-form {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -384,30 +406,130 @@ textarea {
   resize: vertical;
 }
 
-.whatsapp-float {
+.map-wrap {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+
+.map-wrap iframe {
+  width: 100%;
+  height: 360px;
+  border: 0;
+  display: block;
+}
+
+.wa-widget {
   position: fixed;
   right: 18px;
   bottom: 18px;
-  z-index: 30;
-  background: #25d366;
+  z-index: 40;
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+}
+
+.wa-widget-card {
+  width: min(300px, calc(100vw - 28px));
+  background: rgba(20, 24, 31, 0.94);
   color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px 16px 14px;
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  position: relative;
+}
+
+.wa-close {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: default;
+  padding: 4px;
+}
+
+.wa-title,
+.wa-subtitle,
+.wa-text {
+  margin: 0;
+}
+
+.wa-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+}
+
+.wa-subtitle {
+  margin-top: 4px;
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+}
+
+.wa-text {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.wa-fab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 999px;
   text-decoration: none;
+  background: radial-gradient(circle at 30% 30%, #42f58d, #25d366 62%, #18b957);
+  box-shadow:
+    0 0 0 8px rgba(37, 211, 102, 0.13),
+    0 0 0 15px rgba(37, 211, 102, 0.09),
+    0 10px 26px rgba(0, 0, 0, 0.38);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.wa-fab:hover {
+  transform: translateY(-2px) scale(1.01);
+  filter: saturate(1.06);
+}
+
+.wa-fab:focus-visible {
+  outline: 3px solid rgba(37, 211, 102, 0.4);
+  outline-offset: 3px;
+}
+
+.wa-label {
+  position: absolute;
+  top: -9px;
+  right: -5px;
+  background: #ff7a1a;
+  color: #fff;
+  font-size: 0.8rem;
   font-weight: 700;
   border-radius: 999px;
-  padding: 12px 16px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  padding: 3px 9px;
+  line-height: 1;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
 
-.whatsapp-float:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
-  opacity: 0.98;
-}
-
-.whatsapp-float:focus-visible {
-  outline: 3px solid rgba(37, 211, 102, 0.35);
-  outline-offset: 3px;
+.wa-icon {
+  color: #fff;
+  font-size: 1.9rem;
+  line-height: 1;
+  font-weight: 700;
 }
 
 .site-footer {
@@ -478,15 +600,55 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  .quick-points-trust {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-quick-actions {
+    flex-direction: column;
+  }
+
+  .contact-quick-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
   .topbar-content {
     min-height: auto;
     padding: 10px 0;
   }
 
-  .whatsapp-float {
+  .wa-widget {
     right: 12px;
     bottom: 12px;
-    padding: 11px 14px;
-    font-size: 0.92rem;
+    gap: 8px;
+  }
+
+  .wa-widget-card {
+    width: min(280px, calc(100vw - 20px));
+    padding: 14px 14px 12px;
+  }
+
+  .wa-title,
+  .wa-subtitle {
+    font-size: 1.45rem;
+  }
+
+  .wa-text {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .wa-fab {
+    width: 68px;
+    height: 68px;
+  }
+
+  .wa-icon {
+    font-size: 1.7rem;
+  }
+
+  .map-wrap iframe {
+    height: 300px;
   }
 }
