@@ -130,7 +130,7 @@ img {
   color: var(--primary);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  font-size: 0.78rem;
+  font-size: 0.86rem;
 }
 
 h1,
@@ -463,25 +463,25 @@ textarea {
 }
 
 .wa-title {
-  font-size: 1.85rem;
+  font-size: 1.22rem;
   font-weight: 800;
-  line-height: 1.06;
+  line-height: 1.12;
   letter-spacing: -0.01em;
 }
 
 .wa-subtitle {
   margin-top: 4px;
-  font-size: 1.85rem;
-  font-weight: 800;
-  line-height: 1.06;
-  letter-spacing: -0.01em;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.005em;
 }
 
 .wa-text {
-  margin-top: 12px;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 1.12rem;
-  line-height: 1.35;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.92rem;
+  line-height: 1.4;
 }
 
 .wa-fab {
@@ -499,11 +499,12 @@ textarea {
     0 0 0 15px rgba(37, 211, 102, 0.09),
     0 10px 26px rgba(0, 0, 0, 0.38);
   transition: transform 0.2s ease, filter 0.2s ease;
+  animation: wa-pulse 1.9s ease-in-out infinite;
 }
 
 .wa-fab:hover {
-  transform: translateY(-2px) scale(1.01);
-  filter: saturate(1.06);
+  transform: translateY(-2px) scale(1.03);
+  filter: saturate(1.08);
 }
 
 .wa-fab:focus-visible {
@@ -576,6 +577,34 @@ textarea {
   }
 }
 
+@keyframes wa-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 0 8px rgba(37, 211, 102, 0.13),
+      0 0 0 15px rgba(37, 211, 102, 0.09),
+      0 10px 26px rgba(0, 0, 0, 0.38);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow:
+      0 0 0 10px rgba(37, 211, 102, 0.18),
+      0 0 0 22px rgba(37, 211, 102, 0.1),
+      0 14px 30px rgba(0, 0, 0, 0.42);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-fab {
+    animation: none;
+  }
+
+  .wa-fab:hover {
+    transform: none;
+  }
+}
+
 @media (max-width: 700px) {
   .site-header {
     position: static;
@@ -629,14 +658,17 @@ textarea {
     padding: 14px 14px 12px;
   }
 
-  .wa-title,
+  .wa-title {
+    font-size: 1.08rem;
+  }
+
   .wa-subtitle {
-    font-size: 1.45rem;
+    font-size: 0.96rem;
   }
 
   .wa-text {
-    font-size: 1rem;
-    margin-top: 10px;
+    font-size: 0.86rem;
+    margin-top: 8px;
   }
 
   .wa-fab {
